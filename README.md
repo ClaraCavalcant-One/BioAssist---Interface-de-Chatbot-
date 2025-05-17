@@ -100,4 +100,8 @@ A arquitetura compreende:
   informações de saúde através da integração com os serviços do Google Workspace. O desenvolvimento do backend é fundamental 
   para conectar a interface com as funcionalidades desejadas, oferecendo uma solução prática e eficiente para os usuários.
 
+Observação: Para o desenvolvimento, utilizei algumas ferramentas e linguagens com o objetivo de realizar testes. Os arquivos disponíveis ainda estão em fase de desenvolvimento.
+
+O projeto segue em desenvolvimento. 
+
 
