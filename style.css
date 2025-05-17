@@ -1,0 +1,126 @@
+/* Estilos para o elemento body (fundo e layout principal) */
+body {
+    font-family: sans-serif; /* Define a fonte padrão para sans-serif */
+    margin: 0; /* Remove as margens padrão do body */
+    background-color: #FFFFFF; /* Branco (fundo principal) */
+    display: flex; /* Usa Flexbox para o layout */
+    flex-direction: column; /* Organiza os filhos (botões e container) verticalmente */
+    align-items: center; /* Centraliza os filhos horizontalmente */
+    min-height: 100vh; /* Garante que o body ocupe pelo menos a altura da viewport */
+    padding-top: 30px; /* Espaço superior para os botões não ficarem colados na borda */
+}
+
+/* Estilos para a div que contém os botões de ação */
+.actions {
+    display: flex; /* Usa Flexbox para organizar os botões horizontalmente */
+    justify-content: space-around; /* Distribui os botões com espaço igual entre eles */
+    padding: 10px 9px; /* Espaçamento interno vertical e horizontal ao redor dos botões */
+    margin-bottom: 5px; /* Espaçamento abaixo dos botões para separá-los do container */
+    width: 380px; /* Define a largura da área dos botões para alinhar com o container */
+    box-sizing: border-box; /* Garante que padding e border não aumentem a largura total */
+}
+
+/* Estilos para cada botão de ação */
+.action-button {
+    background-color: #0a416b; /* Azul escuro da barra superior como fundo do botão */
+    color: #FFFFFF; /* Branco para a cor do texto do botão */
+    border: none; /* Remove a borda padrão do botão */
+    border-radius: 30px; /* Arredonda os cantos do botão para uma aparência mais suave */
+    padding: 10px 15px; /* Espaçamento interno vertical e horizontal dentro do botão */
+    text-decoration: none; /* Remove qualquer decoração de texto (útil se fosse um link) */
+    font-size: 1em; /* Usa o tamanho de fonte padrão */
+    cursor: pointer; /* Altera o cursor para um ponteiro ao passar sobre o botão */
+    flex-grow: 1; /* Permite que os botões cresçam para ocupar o espaço disponível no .actions */
+    text-align: center; /* Centraliza o texto dentro do botão */
+    margin: 0 5px; /* Adiciona uma pequena margem horizontal entre os botões */
+}
+
+/* Estilos para o container principal do aplicativo */
+.container {
+    background-color: #fff; /* Fundo branco para o container */
+    border: 1px solid #ccc; /* Borda cinza clara ao redor do container */
+    border-radius: 10px; /* Arredonda os cantos do container */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra suave ao container */
+    width: 390px; /* Largura fixa para o layout mobile */
+    display: flex; /* Usa Flexbox para organizar os elementos dentro do container */
+    flex-direction: column; /* Organiza os elementos internos verticalmente */
+    overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse as bordas */
+}
+
+/* Estilos para o cabeçalho (barra superior) do container */
+.header {
+    background-color: #0A316B; /* Azul da barra superior */
+    color: #FFFFFF; /* Texto branco no cabeçalho */
+    padding: 20px; /* Espaçamento interno no cabeçalho */
+    display: flex; /* Usa Flexbox para organizar os elementos do cabeçalho */
+    flex-direction: column; /* Organiza os elementos internos verticalmente */
+    align-items: center; /* Centraliza os elementos horizontalmente */
+    border-bottom: 1px solid #E0E0E0; /* Linha de separação cinza clara na parte inferior */
+}
+
+/* Estilos para o link de login/logout no cabeçalho */
+.header .login-logout {
+    color: #FFFFFF; /* Texto branco */
+    text-decoration: none; /* Remove o sublinhado padrão do link */
+    font-size: 0.9em; /* Tamanho da fonte ligeiramente menor */
+    align-self: flex-end; /* Alinha o link à direita do cabeçalho */
+    margin-bottom: 10px; /* Espaçamento abaixo do link */
+}
+
+/* Estilos para o título principal (BioAssist) no cabeçalho */
+.header h1 {
+    margin: 0; /* Remove as margens padrão do título */
+    font-size: 1.8em; /* Tamanho da fonte do título */
+}
+
+/* Estilos para o espaço em branco entre o cabeçalho e a área de entrada */
+.white-space {
+    background-color: #FFFFFF; /* Fundo branco */
+    height: 420px; /* Altura do espaço em branco */
+    margin-bottom: 20px; /* Espaçamento abaixo do espaço em branco */
+}
+
+/* Estilos para a área de entrada de mensagens (barra inferior) */
+.input-area {
+    background-color: #0A316B; /* Azul da barra inferior */
+    padding: 10px 15px; /* Espaçamento interno na área de entrada */
+    display: flex; /* Usa Flexbox para organizar os elementos da área de entrada */
+    align-items: center; /* Alinha os itens verticalmente */
+    border-top: 1px solid #E0E0E0; /* Linha de separação cinza clara na parte superior */
+}
+
+/* Estilos para o ícone de mais na área de entrada */
+.input-area .plus-icon {
+    color: #FFFFFF; /* Cor branca */
+    margin-right: 10px; /* Espaçamento à direita do ícone */
+    font-size: 1.2em; /* Tamanho do ícone */
+}
+
+/* Estilos para o campo de input de texto na área de entrada */
+.input-area input[type="text"] {
+    flex-grow: 1; /* Permite que o input cresça para ocupar o espaço disponível */
+    border: none; /* Remove a borda padrão do input */
+    border-radius: 20px; /* Arredonda os cantos do input */
+    padding: 8px 20px; /* Espaçamento interno no input */
+    margin-right: 5px; /* Espaçamento à direita do input */
+    font-size: 1em; /* Tamanho da fonte do texto digitado */
+    outline: none; /* Remove a borda de foco padrão */
+    color: #FFFFFF; /* Cor do texto digitado */
+    background-color: rgba(255, 255, 255, 0.2); /* Fundo branco levemente transparente */
+}
+
+/* Estilos para o placeholder do input de texto */
+.input-area input[type="text"]::placeholder {
+    color: #E0E0E0; /* Cor cinza clara para o texto do placeholder */
+}
+
+/* Estilos para o botão de enviar mensagem na área de entrada */
+.input-area button {
+    background: none; /* Remove o fundo padrão do botão */
+    border: none; /* Remove a borda padrão do botão */
+    outline: none; /* Remove a borda de foco padrão */
+    padding: 10px; /* Espaçamento interno do botão */
+    cursor: pointer; /* Altera o cursor para um ponteiro */
+    font-size: 1.2em; /* Tamanho do ícone de enviar */
+    color: #FFFFFF; /* Cor branca do ícone de enviar */
+}
