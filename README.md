@@ -1,7 +1,8 @@
 #Documentação do Projeto: 
 BioAssist - Interface de Chatbot
 
-Data: 16 de Maio de 2025 - Versão: 1.0
+Data: 16 de Maio de 2025 - 
+Versão: 1.0
 Autor: Maria Clara Cavalcante
 
 
