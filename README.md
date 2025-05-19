@@ -12,7 +12,11 @@ Autor: Maria Clara Cavalcante
 simplificar a organização de informações de saúde dos usuários, oferecendo as seguintes funcionalidades:
 
 Arquivar Exames: Salva dados relevantes de exames médicos no Google Sheets.
-Agendar Compromissos: Cria eventos de saúde no Google Agenda. Buscar Exames: Recupera dados de exames arquivados no Google Sheets.
+
+Agendar Compromissos: Cria eventos de saúde no Google Agenda. 
+
+Buscar Exames: Recupera dados de exames arquivados no Google Sheets.
+
 Buscar Compromissos: Lista eventos de saúde agendados no Google Agenda.
 
 A interação inicial do usuário ocorre através de uma interface web construída com HTML e CSS.
