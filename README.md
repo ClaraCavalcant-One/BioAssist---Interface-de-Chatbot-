@@ -1,4 +1,4 @@
-#Documentação do Projeto: 
+Documentação do Projeto: 
 BioAssist - Interface de Chatbot
 
 Data: 16 de Maio de 2025 - 
@@ -8,105 +8,123 @@ Autor: Maria Clara Cavalcante
 
 1. Introdução
  
-  Este documento detalha o desenvolvimento do chatbot BioAssist, uma solução integrada ao Google Workspace para
-simplificar a organização de informações de saúde dos usuários, oferecendo as seguintes funcionalidades:
+Este documento descreve o desenvolvimento do BioAssist, um chatbot integrado ao Google Workspace, projetado para simplificar a gestão de informações de saúde dos usuários. A solução oferece uma série de funcionalidades que facilitam o arquivamento, consulta e organização de dados médicos de forma prática e segura.
 
-Arquivar Exames: Salva dados relevantes de exames médicos no Google Sheets.
+Funcionalidades do Sistema
 
-Agendar Compromissos: Cria eventos de saúde no Google Agenda. 
+1. Arquivamento de Exames
+Armazena informações relevantes de exames médicos no Google Sheets de forma estruturada e segura, permitindo fácil acesso e histórico clínico organizado.
 
-Buscar Exames: Recupera dados de exames arquivados no Google Sheets.
+2. Agendamento de Compromissos
+Cria automaticamente eventos relacionados à saúde (consultas, exames, retornos) no Google Agenda, com notificações e lembretes para evitar esquecimentos.
 
-Buscar Compromissos: Lista eventos de saúde agendados no Google Agenda.
+3. Recuperação de Exames
+Permite ao usuário consultar e visualizar dados de exames médicos previamente armazenados no Google Sheets, com busca rápida por data, tipo ou palavra-chave.
 
-A interação inicial do usuário ocorre através de uma interface web construída com HTML e CSS.
+4. Consulta de Compromissos
+Lista todos os compromissos de saúde registrados no Google Agenda, com filtros por data ou tipo de evento.
+
+5. Geração de Insights a partir de Exames
+Analisa os resultados dos exames arquivados para oferecer insights clínicos básicos, como tendências de saúde, valores fora do padrão de referência e sugestões de acompanhamento (dependendo da integração com modelos analíticos ou IA).
+
+Interação com o Usuário
+
+A interação inicial ocorre por meio de um chatbot, onde o usuário envia suas solicitações em linguagem natural. 
+O sistema interpreta as mensagens e executa as ações correspondentes automaticamente, proporcionando uma experiência fluida e eficiente.
 
 Layout da tela:
 https://codepen.io/Maria-Clara-Cavalcante/pen/gbbEZGR
 
+Aqui está a versão revisada e aprimorada do seu texto, com foco em clareza, coesão técnica e padronização do estilo, mantendo todos os detalhes relevantes e agregando melhorias linguísticas:
 
-2. Arquitetura da Solução
-   
-A arquitetura compreende:
- - Frontend (Interface Web): Página HTML (index.html) estilizada com CSS (styles.css ou BioAssist.css), fornecendo campos de entrada e botões para interação do usuário. 
-   A comunicação com o backend é realizada via JavaScript (AJAX).
+2. Detalhamento das Funcionalidades e Implementação
 
- - Backend (Lógica do Chatbot): Aplicação responsável por receber e processar as mensagens do frontend, interpretar as intenções do usuário e orquestrar a interação com as APIs do Google. 
-   Implementado em Python utilizando um framework web (Flask ou Django).
+2.1. Arquivar Exames Médicos
 
- - APIs do Google:
-   - Google Sheets API: Para leitura e escrita de dados em planilhas do Google Sheets.
-   - Google Calendar API: Para criação e consulta de eventos no Google Calendar.
+Fluxo de Operação
+ O usuário insere os dados do exame na interface. O JavaScript envia essa entrada ao backend via AJAX. O backend interpreta as informações, formata os dados e utiliza a Google Sheets API para armazená-los em uma nova linha da planilha designada.
+Backend
+Configuração de OAuth 2.0.
 
-- Autenticação e Autorização: Implementação do protocolo OAuth 2.0 no backend para garantir acesso seguro e autorizado aos dados do Google Workspace do usuário.
+- Identificação da planilha de destino.
+- Utilização do método append da API para inserção de dados.
 
-3. Detalhamento das Funcionalidades e Implementação
+Frontend
 
-3.1. Arquivar Exames Médicos
-  
-- Fluxo: O usuário insere os detalhes do exame na interface web e os envia. O JavaScript captura a mensagem e a envia ao backend via AJAX. 
-  O backend processa a mensagem, extrai as informações necessárias e utiliza a Google Sheets API para adicionar uma nova linha com os dados do exame na planilha configurada. O status da 
-  operação é retornado ao frontend para feedback ao usuário.
+- O botão "Arquivar" ativa o campo de entrada e orienta o usuário.
+- A área .white-space pode exibir o histórico da interação para melhor acompanhamento.
 
-- Implementação Backend (Google Sheets API): Necessária a configuração da autenticação OAuth 2.0, a especificação da planilha de destino e a 
-  utilização da função de "append" da API para inserir os dados. (Consultar exemplo de código Python anterior para detalhes).
+2.2. Agendar Compromissos de Saúde
 
-- Interface Web: O botão "Arquivar" pode direcionar o foco para o campo de entrada com uma instrução clara. A área .white-space pode exibir um histórico de conversas para melhor interação.
+Fluxo de Operação
+ O usuário informa os detalhes do agendamento (data, hora, descrição, local). O backend processa esses dados e cria o evento no Google Calendar por meio da API. A confirmação ou falha é então exibida no frontend.
 
-3.2. Agendar Compromissos de Saúde
+Backend
+- Requer autenticação via OAuth 2.0.
 
-- Fluxo: O usuário informa os detalhes do agendamento (data, hora, descrição, local) na interface web, que são enviados ao backend. O backend processa a mensagem e utiliza a 
-  Google Calendar API para criar um novo evento com essas informações no calendário do usuário. O frontend recebe e exibe a confirmação ou erro.
-  
-- Implementação Backend (Google Calendar API): Requer autenticação OAuth 2.0 e a construção de um objeto JSON no formato esperado pela API para a criação de eventos. (Consultar exemplo de código Python anterior).
+- Criação de um objeto JSON com os dados do evento.
 
-- Interface Web: O botão "Agendar" pode focar o input e sugerir o formato da entrada.
+- Envio à Google Calendar API para criação do compromisso.
 
-3.3. Buscar por Exame Arquivado
+Frontend
+- O botão "Agendar" pode sugerir o formato da entrada e focar o campo correspondente.
 
-- Fluxo: O usuário digita um termo de busca na interface, enviado ao backend. O backend utiliza a Google Sheets API para ler o conteúdo da planilha de exames e implementa a
-- lógica de filtragem para encontrar as entradas correspondentes ao 
-  termo de busca. Os resultados são enviados e exibidos na interface web.
-  
-- Implementação Backend (Google Sheets API): Envolve a leitura dos dados da planilha e a implementação de algoritmos de busca e filtragem no backend. (Consultar exemplo de código Python anterior).
+2.3. Buscar por Exames Arquivados
 
-- Interface Web: O botão "Buscar" pode apresentar uma instrução para a busca de exames. A área .white-space deve formatar os resultados de forma legível.
-  
-3.4. Buscar Compromissos Agendados
+Fluxo de Operação
+ O usuário insere um termo de busca. O backend acessa a planilha via Google Sheets API, realiza a leitura e aplica uma lógica de filtragem para identificar exames correspondentes. Os resultados são exibidos na interface.
 
-- Fluxo: O usuário solicita a busca por compromissos, possivelmente especificando um período. O backend processa a solicitação e utiliza a Google Calendar API para
-  consultar os eventos dentro do intervalo de tempo definido. Os compromissos encontrados são enviados para exibição na interface.
+Backend
+- Leitura da planilha.
 
-- Implementação Backend (Google Calendar API): Utilização da função de listagem de eventos da API, com parâmetros para definir o período da busca. (Consultar exemplo de código Python anterior).
+- Aplicação de filtros no conteúdo retornado.
 
-- Interface Web: O botão "Buscar" pode incluir a funcionalidade de busca de agendamentos ou um botão dedicado pode ser considerado. A exibição dos compromissos deve incluir detalhes relevantes.
+- Retorno formatado dos dados ao frontend.
 
-4. Tecnologias Envolvidas
+Frontend
+- O botão "Buscar" exibe uma instrução clara e mostra os resultados na área .white-space.
 
- - Frontend: HTML, CSS, JavaScript.
- - Backend: Python, Flask/Django, google-api-python-client, google-auth.
- - Infraestrutura: Google Cloud Platform (GCP).
+2.4. Buscar Compromissos Agendados
 
-5. Próximos Passos
+Fluxo de Operação
 
- - Desenvolvimento completo do backend e definição dos endpoints da API.
- - Implementação da lógica de interpretação da linguagem do usuário no backend.
- - Integração das chamadas às APIs do Google.
- - Desenvolvimento da comunicação entre frontend e backend.
- - Melhorias na interface web para histórico e exibição de resultados.
- - Implementação da funcionalidade de login/logout.
- - Tratamento de erros e feedback ao usuário.
- - Testes e garantia de qualidade.
- - Considerações de segurança.
+ O usuário pode solicitar os compromissos agendados, com ou sem período específico. O backend consulta os eventos no calendário, filtrando por intervalo, e retorna os dados ao frontend.
+
+Backend
+- Uso da função de listagem da Google Calendar API.
+
+- Definição de parâmetros de intervalo (início e fim).
+
+- Retorno formatado com os dados relevantes.
+
+Frontend
+- Pode utilizar o mesmo botão "Buscar" com opções adicionais ou um botão dedicado.
+- A exibição dos compromissos deve destacar data, hora, descrição e local.
+
+3. Tecnologias Envolvidas
+
+- Frontend: HTML, CSS, JavaScript
+- Backend: Python, Flask ou Django
+- APIs: google-api-python-client, google-auth
+- Infraestrutura: Google Cloud Platform (GCP)
+
+4. Próximos Passos
+Finalizar o desenvolvimento do backend e definição dos endpoints.
+
+- Implementar interpretação de linguagem natural no backend para comandos do usuário.
+- Realizar integração completa com as APIs do Google.
+- Conectar frontend e backend com validação e feedback.
+- Melhorar a interface para exibição de histórico, resultados e erros.
+- Implementar funcionalidades de login/logout com OAuth.
+- Adotar tratamento robusto de erros e mensagens amigáveis ao usuário.
+- Conduzir testes unitários, funcionais e de integração.
+- Reforçar as medidas de segurança e privacidade.
 
 6. Conclusão
+  
+  O BioAssist propõe uma solução prática, segura e integrada para organização de informações de saúde, utilizando os serviços do Google Workspace. Com uma interface web intuitiva e uma camada de backend robusta, a ferramenta busca facilitar o arquivamento, agendamento e recuperação de dados médicos. O avanço no desenvolvimento da lógica do chatbot e a integração com APIs são essenciais para entregar uma experiência fluida e centrada no usuário.
 
-  O projeto BioAssist, com sua interface web inicial, visa proporcionar uma maneira intuitiva de gerenciar 
-  informações de saúde através da integração com os serviços do Google Workspace. O desenvolvimento do backend é fundamental 
-  para conectar a interface com as funcionalidades desejadas, oferecendo uma solução prática e eficiente para os usuários.
 
 Observação: Para o desenvolvimento, utilizei algumas ferramentas e linguagens com o objetivo de realizar testes. Os arquivos disponíveis ainda estão em fase de desenvolvimento.
 
 O projeto segue em desenvolvimento. 
-
-
